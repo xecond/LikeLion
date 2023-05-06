@@ -1,0 +1,5 @@
+print("당신의 이름은 무엇입니까?")
+username = input()
+print("당신은 어떤 과일을 좋아합니까?")
+fruitname = input()
+print(f"{username}씨가 좋아하는 과일은 {fruitname}입니다!")
