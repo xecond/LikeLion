@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovelCommunity</title>
+</head>
+<body>
+    <h1>Web Novel Community</h1>
+    <p>총 게시물 수: {{novels.count}}</p>
+    <div class="container">
+    <table>
+        <tr>
+            <td>제목</td>
+            <td>작가</td>
+            <td>별점</td>
+        </tr>
+        {% for novel in novels %}
+        <tr>
+            <td><a href="{% url 'detail' novel.id %}">{{novel.title}}</a></td>
+            <td>{{novel.author}}</td>
+            <td>{{novel.rating}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    <div>
+        <a href="{% url 'new' %}">새글 작성</a>
+    </div>
+</body>
+</html>
