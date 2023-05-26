@@ -23,6 +23,7 @@ def create(request):
     form = BlogForm(request.POST, request.FILES)
     if form.is_valid():
         new_blog = form.save(commit=False)
+        new_blog.writer = request.user
         new_blog.pub_date = timezone.now()
         new_blog.save()
         return redirect('detail', new_blog.id)
@@ -35,7 +36,6 @@ def edit(request, id):
 def update(request, id):
     update_blog = Blog.objects.get(id=id)
     update_blog.title = request.POST['title']
-    update_blog.writer = request.POST['writer']
     update_blog.body = request.POST['body']
     update_blog.pub_date = timezone.now()
     update_blog.save()
